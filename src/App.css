@@ -1,0 +1,19 @@
+/* Global Reset */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.App {
+  margin: 24px;
+}
+
+select{
+  padding: 3px;
+}
+
+.search-by{
+  margin-bottom: 12px;
+}

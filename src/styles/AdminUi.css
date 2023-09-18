@@ -1,0 +1,34 @@
+.admin-ui {
+  width: 100%;
+}
+.w100 {
+  width: 100%;
+}
+
+/* pagination */
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+.btn-pagination {
+  width: 30px;
+  height: 30px;
+  color: white;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.pagination__page-count {
+}
+
+.pagination__buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
