@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import '../styles/SearchBar.css'
+import "../styles/SearchBar.css";
+import InputText from "./InputText";
 export default function SearchBar({ placeholder, handleSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const onChangeHandler = (e) => {
+  const handleInputChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
   };
@@ -11,14 +12,13 @@ export default function SearchBar({ placeholder, handleSearch }) {
   useEffect(() => {
     handleSearch(searchTerm);
   }, [searchTerm]);
-  
+
   return (
     <div className="search-bar">
-      <input
-        type="text"
+      <InputText
         value={searchTerm}
         placeholder={placeholder}
-        onChange={onChangeHandler}
+        onChange={handleInputChange}
       />
     </div>
   );

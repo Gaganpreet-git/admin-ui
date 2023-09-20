@@ -2,6 +2,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import EditView from "./EditView";
 import { useState } from "react";
+import CheckBox from "./CheckBox";
 
 function Row({
   data,
@@ -17,26 +18,34 @@ function Row({
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isHeadChecked, setIsHeadChecked] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
 
-  const edit = () => {
+  const handleDeleteClick = () => {
+    deleteRow(id);
+  };
+
+  const handleEditClick = () => {
     setIsEditing(true);
   };
 
-  const handleEditSave = (editedName, editedEmail) => {
+  const handleEditSave = (editedName, editedEmail, editedRole) => {
     setUsers((prevState) => {
       let data = [...prevState];
       const target = data.find((obj) => obj.id === id);
       target.name = editedName;
       target.email = editedEmail;
+
+      if (editedRole !== "select role") {
+        target.role = editedRole;
+      }
       return data;
     });
     setIsEditing(false);
   };
 
-  const onChangeHandler = (e) => {
+  const handleCheckboxChange = (e) => {
     const isChecked = e.target.checked;
-    setIsChecked((prevState) => !prevState);
+    // setIsChecked((prevState) => !prevState);
     let data = [...selectedRows];
     if (isChecked) {
       data.push(id);
@@ -68,13 +77,7 @@ function Row({
     return (
       <tr>
         <th>
-          <input
-            type="checkbox"
-            checked={isHeadChecked}
-            onChange={(e) => {
-              handleCheckedAll(e);
-            }}
-          />
+          <CheckBox checked={isHeadChecked} onChange={handleCheckedAll} />
         </th>
         <th>Name</th>
         <th>Email</th>
@@ -85,11 +88,10 @@ function Row({
   }
 
   return (
-    <tr className={selectedRows.includes(id)?"active" : null}>
-      <td >
-        <input
-          type="checkbox"
-          onChange={onChangeHandler}
+    <tr className={selectedRows.includes(id) ? "active" : null}>
+      <td>
+        <CheckBox
+          onChange={handleCheckboxChange}
           checked={selectedRows.includes(id)}
         />
       </td>
@@ -97,12 +99,10 @@ function Row({
       <td>{email}</td>
       <td>{role}</td>
       <td className="flex">
-        <ModeEditOutlineOutlinedIcon onClick={edit} />
+        <ModeEditOutlineOutlinedIcon onClick={handleEditClick} />
         <DeleteOutlineIcon
           style={{ color: "red" }}
-          onClick={() => {
-            deleteRow(id);
-          }}
+          onClick={handleDeleteClick}
         />
       </td>
       {isEditing && (
@@ -110,7 +110,7 @@ function Row({
           setIsEditing={setIsEditing}
           name={name}
           email={email}
-          handleSave={handleEditSave}
+          onSave={handleEditSave}
         />
       )}
     </tr>

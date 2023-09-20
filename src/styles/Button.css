@@ -15,3 +15,7 @@
 .delete-btn {
   margin-bottom: 16px;
 }
+
+.btn:hover {
+  background: 0.8;
+}

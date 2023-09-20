@@ -1,37 +1,32 @@
 .edit-view {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.667);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .edit-view-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: start;
-  }
-  
-  .edit-view-inner > input {
-    padding: 6px;
-    border-radius: 2px;
-    border: 0;
-  }
-  .edit-view-inner > input:focus {
-    /* padding: 6px;
-    border-radius: 2px; */
-    border: 0;
-    outline: 0;
-  }
-  
-  .edit-view-buttons {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-  
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.667);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-view-inner {
+  border-radius: 6px;
+  padding: 36px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: start;
+}
+
+.edit-view-inner > input {
+  padding: 6px;
+  border-radius: 2px;
+}
+
+.edit-view-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
